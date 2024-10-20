@@ -1,0 +1,126 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --theme-blue: #0254A7;
+  --theme-gray: #E0E0E0;
+  --them-inactive-gray: #BDBDBD;
+}
+
+body {
+  background: #efeeee;
+  font-family: Roboto, "Comic Sans MS", serif;
+
+  &.ltr * {
+    text-align: right;
+  }
+}
+
+#app {
+  max-width: 1280px;
+  margin: auto;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.seeAllBtn span, a {
+  font-size: 14px;
+  color: var(--theme-blue);
+  font-weight: bold;
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 10px 0;
+}
+
+.mb-pb-17 {
+  margin-bottom: 17px;
+  padding-bottom: 17px;
+  border-color: var(--theme-gray);
+
+  .seeAllBtn {
+    gap: 0.5rem;
+  }
+
+  .header-title {
+    padding-right: 8px;
+    border-right: 6px solid var(--theme-blue);
+    border-radius: 2px;
+  }
+}
+
+.slideBtn {
+  width: 44px;
+  height: 20px;
+  border: 1px solid var(--theme-gray);
+  padding: 0 16px;
+  user-select: none;
+
+  &:not(.active) {
+    color: var(--them-inactive-gray);
+    border-color: var(--them-inactive-gray);
+    cursor: not-allowed;
+  }
+}
+
+.mansionContainer {
+  .mansionBox {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    padding: 16px;
+    border-radius: 12px;
+
+    img {
+      max-width: 300px;
+    }
+  }
+}
+
+.vl {
+  height: 82px;
+  width: 2px;
+  background: var(--theme-gray);
+  margin: 0.5rem auto;
+}
+
+.date {
+  z-index: 10;
+  background: #efeeee;
+  padding: 0 5px;
+}
+
+.hr {
+  width: 100%;
+  height: 1px;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23BDBDBDFF' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  z-index: 0;
+  position: absolute;
+  bottom: 20px;
+}
+
+.date {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%; /* Set the width of the slider */
+  margin: auto; /* Center the slider */
+  box-shadow: inset 20px 0 20px -20px rgba(255, 255, 255, 0.5),
+  inset -20px 0 20px -20px rgba(255, 255, 255, 0.5);
+}
+
+.slides {
+  gap: 2rem;
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex: 10 0 25%;
+  box-sizing: border-box;
+}
