@@ -2,7 +2,9 @@ import Gallery from "./Gallery.jsx";
 import Mansionry from "./Mansionry.jsx";
 import Header from "./Header.jsx";
 import {TranslationProvider} from "./TranslationProvider.jsx";
-import {useRef, useState} from "react";
+import {useContext, useRef, useState} from "react";
+import LanguageDirectionSwitchButton from "./LanguageDirectionSwitchButton.jsx";
+import {LanguageDirectionContext, LanguageDirectionProvider} from "./LanguageDirectionprovider.jsx";
 
 export default function App() {
     const remSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -12,37 +14,39 @@ export default function App() {
 
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isLastSlide, setIsLastSlide] = useState(false);
+    const langDir = useContext(LanguageDirectionContext);
 
     const moveSlide = (direction) => {
+        console.log(langDir.isLTR);
 
-        const slidesEl = slidesRef.current;
+        // if (langDir.isLTR) {
+        //     direction = direction * (-1);
+        // }
 
-        const mansionBoxes = slidesEl?.querySelectorAll('.slide');
-        const mansionBoxCount = mansionBoxes.length;
+        const slides = slidesRef.current;
 
-        const mansionBoxWidth = mansionBoxes[0].offsetWidth;
-        const spaceBetweenElements = (isMobile ? 1 : 2) * remSize;
+        const slideWidth = slides?.querySelector('.slide')?.offsetWidth || 0;
+        const gap = (isMobile ? 1 : 2) * remSize;
+        const slideUnit = slideWidth + gap;
 
-        const mansionBoxAndSpaceWidth = mansionBoxWidth + spaceBetweenElements;
+        const slideCount = slides?.querySelectorAll('.slide').length;
+        const maxOffset = slideCount - (isMobile ? 1 : 3.5);
 
-        const maxSlideIndex = mansionBoxCount - (isMobile ? 1 : 3.5);
+        const currentPosition = Math.floor(currentSlide / slideUnit);
+        const nextSlide = currentSlide + (slideUnit * -direction);
 
-        const currentIndex = Math.floor(currentSlide / mansionBoxAndSpaceWidth);
+        setIsLastSlide(-direction > 0 && currentPosition >= Math.floor(maxOffset));
 
-        setCurrentSlide((prevSlide) => {
-            const nextSlide = prevSlide + (mansionBoxAndSpaceWidth * -direction);
-
-            setIsLastSlide(-direction > 0 && currentIndex >= Math.floor(maxSlideIndex));
-
-            return nextSlide;
-        });
+        setCurrentSlide(nextSlide);
     };
 
     return (
-        <TranslationProvider>
-            <Header currentSlide={currentSlide} isLastSlide={isLastSlide} moveSlide={moveSlide}/>
-            <Mansionry sliderRef={slidesRef} currentSlide={currentSlide}/>
-            <Gallery/>
-        </TranslationProvider>
+            <TranslationProvider>
+                <LanguageDirectionSwitchButton/>
+                <Header currentSlide={currentSlide} isLastSlide={isLastSlide} moveSlide={moveSlide}/>
+                <Mansionry moveSlide={moveSlide} sliderRef={slidesRef} currentSlide={currentSlide}
+                           isLastSlide={isLastSlide}/>
+                <Gallery/>
+            </TranslationProvider>
     );
 }

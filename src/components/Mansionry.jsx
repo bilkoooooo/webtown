@@ -1,11 +1,15 @@
 import {Mansions} from "../assets/mansions.js";
-import {FaArrowLeftLong} from "react-icons/fa6";
+import {FaArrowLeftLong, FaArrowRightLong} from "react-icons/fa6";
 import {translations} from "../assets/translations.js";
+import {useContext, useState} from "react";
+import {LanguageDirectionContext} from "./LanguageDirectionprovider.jsx";
 
-export default function Mansionry({currentSlide, sliderRef}) {
+export default function Mansionry({moveSlide, currentSlide, isLastSlide, sliderRef}) {
+    const {isLTR} = useContext(LanguageDirectionContext);
+
     const mansionBox = ({id, img, link, title, desc, date}) => {
         return (
-            <div key={id.toString()} className={"d-inline-block slide "}>
+            <div className={"slide position-relative"}>
                 <div className={"mansionBox d-inline-flex flex-column"}>
                     <img src={img} alt={title} className={"w-100"}/>
                     <div>
@@ -16,7 +20,7 @@ export default function Mansionry({currentSlide, sliderRef}) {
                     </div>
 
                     <a href={link} className={"text-decoration-none"}>
-                        <FaArrowLeftLong/>
+                        {isLTR ? <FaArrowRightLong/> : <FaArrowLeftLong/>}
                         <span>{translations.viewMoreBtnText}</span>
                     </a>
                 </div>
@@ -33,15 +37,28 @@ export default function Mansionry({currentSlide, sliderRef}) {
         )
     }
 
+    const {handleTouchStart, handleTouchMove, handleTouchEnd} = TouchEvent;
+
+
     return (
-        <div className={"mansionContainer w-auto slider overflow-hidden position-relative"}>
-            <div className="slides justify-content-end"
+        <div className={"mansionContainer w-auto slider overflow-hidden position-relative"}
+             onTouchStart={handleTouchStart}
+             onTouchMove={handleTouchMove}
+             onTouchEnd={handleTouchEnd}
+        >
+            <div className="slides d-flex"
                  ref={sliderRef}
-                 style={{transform: `translateX(${currentSlide}px)`}}
+                 style={{transform: `translateX(${isLTR ? currentSlide * (-1) : currentSlide}px)`}}
             >
-                {Mansions.sort((a, b) => a.date - b.date).map((mansion) => mansionBox(mansion))}
+                {Mansions.sort((a, b) => b.date - a.date).map((mansion) => {
+                    return (
+                        <div key={mansion.id.toString()} className={"col-lg-3 col-sm-9"}>
+                            {mansionBox(mansion)}
+                            <div className={"hr"}/>
+                        </div>
+                    )
+                })}
             </div>
-            <div className={"hr"}></div>
         </div>
     )
 }
