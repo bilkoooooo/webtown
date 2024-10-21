@@ -1,0 +1,37 @@
+.seeAllBtn span, a {
+  font-size: 14px;
+  color: var(--theme-blue);
+  font-weight: bold;
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.slideBtn {
+  width: 44px;
+  height: 20px;
+  border: 1px solid var(--theme-gray);
+  padding: 0 16px;
+
+  &:not(.active) {
+    color: var(--them-inactive-gray);
+    border-color: var(--them-inactive-gray);
+    cursor: not-allowed;
+  }
+}
+
+.mb-pb-17 {
+  margin-bottom: 17px;
+  padding-bottom: 17px;
+  border-color: var(--theme-gray);
+
+  .seeAllBtn {
+    gap: 0.5rem;
+  }
+
+  .header-title {
+    padding-right: 8px;
+    border-radius: 2px;
+  }
+}

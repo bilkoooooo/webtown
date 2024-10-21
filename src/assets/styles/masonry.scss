@@ -1,0 +1,47 @@
+
+.masonry-container {
+  columns: 2;
+  column-gap: 1rem;
+}
+
+@media (min-width: 576px) {
+  .masonry-container {
+    columns: 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .masonry-container {
+    columns: 2;
+  }
+}
+
+@media (min-width: 992px) {
+  .masonry-container {
+    columns: 5;
+  }
+}
+
+.masonry-item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1rem;
+  break-inside: avoid;
+}
+
+.image-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.image-card:hover {
+  transform: scale(1.02);
+}
+
+.image-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

@@ -1,17 +1,16 @@
 import {useContext} from "react";
-import {TranslationContext} from './TranslationProvider.jsx';
+import {TranslationContext} from '../contexts/TranslationProvider.jsx';
 import SlideButtonContainer from "./SlideButtonContainer.jsx";
-import {FaArrowLeftLong, FaArrowRightLong} from "react-icons/fa6";
-import {LanguageDirectionContext} from "./LanguageDirectionprovider.jsx";
+import {FaArrowLeftLong} from "react-icons/fa6";
+import '../assets/styles/header.scss';
 
 export default function Header({currentSlide, isLastSlide, moveSlide}) {
     const {viewAllBtnText, headerTitle} = useContext(TranslationContext);
-    let {isLTR} = useContext(LanguageDirectionContext);
 
     const seeAllBtn = () => {
         return (
             <div className={"d-flex align-items-center seeAllBtn cursor-pointer align-self-end"}>
-                {isLTR ? <FaArrowRightLong/> : <FaArrowLeftLong/>}
+                <FaArrowLeftLong/>
                 <span>{viewAllBtnText}</span>
             </div>
         )

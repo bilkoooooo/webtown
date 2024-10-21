@@ -1,6 +1,6 @@
 import {useContext} from "react";
-import {TranslationContext} from "./TranslationProvider.jsx";
-import {LanguageDirectionContext} from "./LanguageDirectionprovider.jsx";
+import {TranslationContext} from "../contexts/TranslationProvider.jsx";
+import {LanguageDirectionContext} from "../contexts/LanguageDirectionprovider.jsx";
 
 export default function LanguageDirectionSwitchButton() {
     const translation = useContext(TranslationContext);
@@ -15,7 +15,7 @@ export default function LanguageDirectionSwitchButton() {
     }
 
     return (
-        <button className={"pill btn btn-sm btn-primary"} onClick={onChangeLanguageDir}>
+        <button className={"pill btn btn-sm btn-primary mb-3"} onClick={onChangeLanguageDir}>
             {translation.changeLangBn} {dir.toUpperCase()}
         </button>
     )

@@ -1,4 +1,4 @@
-import {Images} from '../components/images.js'
+import {Images} from './images.js'
 
 const getRandomYearAndMonth = (startYear = 2000, endYear = 2025) => {
     // Generate a random year within the specified range
@@ -16,7 +16,7 @@ export const Mansions = [
         img: Images[0],
         link: '/?id=1',
         title: 'víz',
-        desc: 'Morbi feugiat nisi in felis maximus, vel sollicitudin dui commodo. Integer blandit non odio a congue. Maecenas in aliquet nisl. Integer maximus et.',
+        desc: 'Morbi feugiat nisi in felis maximus, vel sollicitudin dui commodo. Integer blandit non odio a congue. Maecenas in aliquet nisl. Integer maximus et.Morbi feugiat nisi in felis maximus, vel sollicitudin dui commodo. Integer blandit non odio a congue. Maecenas in aliquet nisl. Integer maximus et.',
         date: getRandomYearAndMonth()
     },
 

@@ -1,28 +1,20 @@
-import Gallery from "./Gallery.jsx";
-import Mansionry from "./Mansionry.jsx";
+import Masonry from "./Masonry.jsx";
+import Timeline from "./Timeline.jsx";
 import Header from "./Header.jsx";
-import {TranslationProvider} from "./TranslationProvider.jsx";
-import {useContext, useRef, useState} from "react";
+import {TranslationProvider} from "../contexts/TranslationProvider.jsx";
+import {useRef, useState} from "react";
 import LanguageDirectionSwitchButton from "./LanguageDirectionSwitchButton.jsx";
-import {LanguageDirectionContext, LanguageDirectionProvider} from "./LanguageDirectionprovider.jsx";
 
 export default function App() {
     const remSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
     const slidesRef = useRef();
 
-    const isMobile = false;
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isLastSlide, setIsLastSlide] = useState(false);
-    const langDir = useContext(LanguageDirectionContext);
 
     const moveSlide = (direction) => {
-        console.log(langDir.isLTR);
-
-        // if (langDir.isLTR) {
-        //     direction = direction * (-1);
-        // }
-
         const slides = slidesRef.current;
 
         const slideWidth = slides?.querySelector('.slide')?.offsetWidth || 0;
@@ -41,12 +33,12 @@ export default function App() {
     };
 
     return (
-            <TranslationProvider>
-                <LanguageDirectionSwitchButton/>
-                <Header currentSlide={currentSlide} isLastSlide={isLastSlide} moveSlide={moveSlide}/>
-                <Mansionry moveSlide={moveSlide} sliderRef={slidesRef} currentSlide={currentSlide}
-                           isLastSlide={isLastSlide}/>
-                <Gallery/>
-            </TranslationProvider>
+        <TranslationProvider>
+            <LanguageDirectionSwitchButton/>
+            <Header currentSlide={currentSlide} isLastSlide={isLastSlide} moveSlide={moveSlide}/>
+            <Timeline sliderRef={slidesRef} currentSlide={currentSlide} isLastSlide={isLastSlide}
+                      moveSlide={moveSlide}/>
+            <Masonry/>
+        </TranslationProvider>
     );
 }

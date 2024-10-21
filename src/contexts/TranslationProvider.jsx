@@ -1,4 +1,4 @@
-import {translations} from "../assets/translations.js";
+import {translations} from "../services/translations.js";
 import {createContext} from "react";
 
 export const TranslationContext = createContext(null);

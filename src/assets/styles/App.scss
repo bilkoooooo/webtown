@@ -1,0 +1,92 @@
+@import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --theme-blue: #0254A7;
+  --theme-gray: #E0E0E0;
+  --them-inactive-gray: #BDBDBD;
+}
+
+@font-face {
+  font-family: Roboto-regular;
+  src: url('../fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: Roboto-black;
+  src: url('../fonts/Roboto-Black.ttf');
+}
+
+body {
+  background: #efeeee;
+  font-family: Roboto-regular, "Comic Sans MS", serif;
+}
+
+#app {
+  max-width: 1280px;
+  margin: auto;
+  padding: 10px 20px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+[dir="ltr"] {
+  .header-title {
+    padding-left: 8px;
+    border-left: 6px solid var(--theme-blue);
+  }
+
+  .seeAllBtn, .seeAllBtn svg, .mansionBox a svg {
+    order: 2;
+  }
+
+  .blur {
+    right: 0;
+    transform: rotate(180deg);
+    left: unset;
+  }
+
+  a svg,
+  .seeAllBtn svg {
+    transform: rotate(180deg);
+  }
+
+  .slide:first-child .hr {
+    width: 50%;
+    right: 0;
+  }
+
+  .slide:last-child .hr {
+    width: 50%;
+    left: 0;
+  }
+
+}
+
+[dir="rtl"] {
+  .slideBtn#left {
+    order: 2;
+  }
+
+  .header-title {
+    padding-right: 8px;
+    border-right: 6px solid var(--theme-blue);
+  }
+
+  .seeAllBtn, .seeAllBtn svg, .mansionBox a svg {
+    order: 1;
+
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .header-title {
+    max-width: 200px;
+    font-family: Roboto-black, "Comic Sans MS", serif;
+  }
+  .slides {
+    overflow-x: scroll!important;
+  }
+}
