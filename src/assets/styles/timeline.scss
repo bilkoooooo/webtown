@@ -1,10 +1,7 @@
-
-.mansionContainer {
-  .mansionBox {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-    padding: 1rem;
-    border-radius: 12px;
-  }
+.mansionBox {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  padding: 1rem;
+  border-radius: 12px;
 }
 
 .vl {
@@ -18,21 +15,19 @@
   z-index: 10;
   background: #efeeee;
   padding: 0 5px;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .hr {
-  width: 100%;
   height: 1px;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23BDBDBDFF' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
-  background-color: white;
+  //background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23BDBDBDFF' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  //background-color: white;
   z-index: -1;
   position: absolute;
   bottom: 20px;
-}
-
-.date {
-  font-size: 1rem;
-  font-weight: 600;
+  border-bottom: 2px dashed #cbd5e1;
+  margin: auto;
 }
 
 .slider {
@@ -47,25 +42,6 @@
 .slides {
   gap: 2rem;
   transition: transform 0.5s ease;
-}
-
-.timeline-line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-bottom: 2px dashed #cbd5e1;
-  z-index: -1;
-}
-
-.timeline-dot {
-  position: absolute;
-  bottom: -4px;
-  width: 12px;
-  height: 12px;
-  background: #3b82f6;
-  border-radius: 50%;
-  transform: translateX(-50%);
 }
 
 .blur {

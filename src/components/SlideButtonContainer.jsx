@@ -8,11 +8,11 @@ export default function SlideButtonContainer({currentSlide, isLastSlide, moveSli
     const SlideButton = (id, Icon) => {
         const isLeftBtn = id === 'left';
         let isActive = isLeftBtn ? !isLastSlide : currentSlide;
-        let direction = isLeftBtn ? -1 : 1;
+        let direction = isLeftBtn ? 1 : -1;
 
         if (isLTR) {
             isActive = isLeftBtn ? currentSlide : !isLastSlide;
-            direction = isLeftBtn ? 1 : -1;
+            direction = isLeftBtn ? -1 : 1;
         }
 
         return (

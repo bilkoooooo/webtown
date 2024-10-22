@@ -25,9 +25,9 @@ export default function App() {
         const maxOffset = slideCount - (isMobile ? 1 : 3.5);
 
         const currentPosition = Math.floor(currentSlide / slideUnit);
-        const nextSlide = currentSlide + (slideUnit * -direction);
+        let nextSlide = (currentSlide + (slideUnit * direction));
 
-        setIsLastSlide(-direction > 0 && currentPosition >= Math.floor(maxOffset));
+        setIsLastSlide(direction > 0 && currentPosition >= Math.floor(maxOffset));
 
         setCurrentSlide(nextSlide);
     };
@@ -36,7 +36,9 @@ export default function App() {
         <TranslationProvider>
             <LanguageDirectionSwitchButton/>
             <Header currentSlide={currentSlide} isLastSlide={isLastSlide} moveSlide={moveSlide}/>
-            <Timeline sliderRef={slidesRef} currentSlide={currentSlide} isLastSlide={isLastSlide}
+            <Timeline sliderRef={slidesRef}
+                      currentSlide={currentSlide}
+                      isLastSlide={isLastSlide}
                       moveSlide={moveSlide}/>
             <Masonry/>
         </TranslationProvider>
